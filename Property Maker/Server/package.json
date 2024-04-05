@@ -2,14 +2,21 @@
   "name": "property-maker",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node server/index.js"
+    "dev": "nodemon -w Server/server.js Server/server.js",
+    "start": "nodemon Server/server.js",
+    "build": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cjs-loader": "^0.1.0",
+    "cors": "^2.8.5",
     "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }
