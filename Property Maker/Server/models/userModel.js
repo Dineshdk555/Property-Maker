@@ -13,7 +13,7 @@ const userSchema = mongoose.Schema({
 
   phonenumber: {
     type: Number,
-    required: true,
+    // required: true,
   },
 
   email: {

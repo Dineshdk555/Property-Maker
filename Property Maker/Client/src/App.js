@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import LogIn from "./components/auth/LogIn";
-
+import LandingPage from "./pages/LandingPage";
+import { Route, Routes,Router, Navigate } from "react-router-dom";
+import Register from "./components/auth/Register";
 const App = () => {
   const [data, setData] = useState(null);
-
+  console.log("data",data)
     useEffect(() => {
         // Fetch data from the backend when the component mounts
         fetchData();
@@ -21,10 +23,12 @@ const App = () => {
     };
   return (
     <>
-    <div id="main-app">
+    <Routes >
+       <Route path="/" element={<LandingPage/>} />
+       <Route path="/login" element={<LogIn/>} />
+       <Route path="/register" element={<Register/>} />
+    </Routes>
       {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
-      <LogIn />
-    </div>
     </>
   );
 };
