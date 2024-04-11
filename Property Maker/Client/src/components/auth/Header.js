@@ -32,7 +32,7 @@ const Header = () => {
       </div>
 
       {/* Conditional rendering of SignInPopup */}
-      {showSignInPopup && <SignInPopup />}
+      {showSignInPopup && <SignInPopup closePopup={toggleSignInPopup}/>}
     </header>
   );
 }

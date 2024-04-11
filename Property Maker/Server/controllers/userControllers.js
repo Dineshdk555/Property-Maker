@@ -1,9 +1,10 @@
 const userModel = require("../models/userModel");
-const { hashGenerator } = require("../helpers/hashing");
+const { hashGenerator, hashValidator } = require("../helpers/hashing");
+const { JWTtokenGenerator } = require("../helpers/Token");
 
 exports.registerUser = async (req, res) => {
   try {
-    const { firstname, lastname, email, password } = req.body;
+    const { firstname, lastname, email, password,role,zipcode,phonenumber } = req.body;
 
     // Validation: Check if required fields are provided
     if (!firstname || !lastname || !email || !password) {
@@ -35,6 +36,9 @@ exports.registerUser = async (req, res) => {
       lastname,
       email,
       password: hashedPassword,
+      role,
+      zipcode,
+      phonenumber,
       aflag: true, 
     });
 
@@ -48,6 +52,51 @@ exports.registerUser = async (req, res) => {
     });
   } catch (error) {
     console.error("Error registering user:", error);
+    return res.status(500).json({ error: "An internal server error occurred." });
+  }
+};
+exports.loginUser = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const isUser = await userModel.findOne({ email });
+
+    if (!isUser) {
+      return res.status(404).json({ error: "This email isn't registered yet" });
+    } else if (!isUser.aflag) {
+      return res.status(403).json({ error: "This account has been deactivated" });
+    } else {
+      const result = await hashValidator(password, isUser.password);
+      if (result) {
+        const jwtToken = await JWTtokenGenerator({
+          id: isUser._id,
+          expire: "30d",
+        });
+
+        res.cookie("jwt", jwtToken, {
+          httpOnly: true,
+          maxAge: 30 * 24 * 60 * 60 * 1000,
+        });
+
+        return res.status(200).json({
+          success: true,
+          userID: isUser._id,
+          firstname: isUser.firstname,
+          lastname: isUser.lastname,
+          email: isUser.email,
+          token: "JWT " + jwtToken,
+          profilePic: isUser.profilePic,
+          role: isUser.role,
+          zipcode: isUser.zipcode,
+          phonenumber: isUser.phonenumber,
+          admin: true,
+        });
+      } else {
+        return res.status(401).json({ error: "Password doesn't match" });
+      }
+    }
+  } catch (error) {
+    console.error("Error logging in user:", error);
     return res.status(500).json({ error: "An internal server error occurred." });
   }
 };
