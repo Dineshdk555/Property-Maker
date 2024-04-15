@@ -22,14 +22,14 @@ const App = () => {
         }
     };
   return (
-    <>
+    <div className="mx-auto max-w-screen-xl">
     <Routes >
        <Route path="/" element={<LandingPage/>} />
        <Route path="/login" element={<LogIn/>} />
        <Route path="/register" element={<Register/>} />
     </Routes>
       {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
-    </>
+    </div>
   );
 };
 

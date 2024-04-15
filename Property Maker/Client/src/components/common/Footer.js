@@ -3,8 +3,8 @@ import React from 'react'
 const Footer = () => {
     return (
         <>
-            <div className="bg-white">
-                <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+            <div>
+                <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 bg-gray-200">
                     <div className="lg:flex lg:items-start lg:gap-8">
                         <div className="text-teal-600">
                             {/* <svg className="h-8" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +37,7 @@ const Footer = () => {
                                             type="email"
                                             id="UserEmail"
                                             placeholder="enter email address"
-                                            className="w-full border-none focus:border-transparent focus:ring-transparent sm:text-sm"
+                                            className="w-full border-none sm:text-sm bg-gray-200"
                                         />
 
                                         <button
