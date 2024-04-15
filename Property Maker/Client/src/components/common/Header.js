@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import SignInPopup from './LogIn'; // Import your SignInPopup component
+import SignInPopup from '../auth/LogIn';
+
 
 const Header = () => {
   const [showSignInPopup, setShowSignInPopup] = useState(false);
@@ -9,13 +10,13 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white py-4 sticky">
+    <header className="bg-gray-300 py-4 sticky mx-auto max-w-screen-xl px-4  sm:px-6 lg:px-8">
       <div className="container mx-auto flex justify-between items-center">
         {/* Left Menu */}
         <div className="flex items-center space-x-4">
-          <a href="#" className="text-black hover:text-gray-300">Buy</a>
-          <a href="#" className="text-black hover:text-gray-300">Sell</a>
-          <a href="#" className="text-black hover:text-gray-300">Agent finder</a>
+          <a href="#" className="text-black hover:text-gray-600">Buy</a>
+          <a href="#" className="text-black hover:text-gray-600">Sell</a>
+          <a href="#" className="text-black hover:text-gray-600">Agent finder</a>
         </div>
 
         {/* Logo */}
@@ -25,9 +26,9 @@ const Header = () => {
 
         {/* Right Menu */}
         <div className="flex items-center space-x-4">
-          <a href="#" className="text-black hover:text-gray-300">Manage Rentals</a>
-          <a href="#" className="text-black hover:text-gray-300">Help</a>
-          <button onClick={toggleSignInPopup} className="text-black hover:text-gray-300">Sign In</button>
+          <a href="#" className="text-black hover:text-gray-600">Manage Rentals</a>
+          <a href="#" className="text-black hover:text-gray-600">Help</a>
+          <button onClick={toggleSignInPopup} className="text-black hover:text-gray-600">Sign In</button>
         </div>
       </div>
 
