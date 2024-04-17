@@ -6,22 +6,42 @@
   --secondary-main: #660101;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.cardsCarousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
-body {
-  max-width: 1800px;
-  margin: 0 auto;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+.cardsCarousel {
+  display: flex;
+  width: 100%;
 }
-#main-app {
-  background-color: rgb(234, 233, 237);
-  min-height: 100vh;
-  padding: 10px 30px;
+
+.cardsSlides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.cardsSlide {
+  flex: 0 0 100%;
+}
+
+.cardsPrev,
+.cardsNext {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 2;
+}
+
+.cardsPrev {
+  left: 0;
+}
+
+.cardsNext {
+  right: 0;
 }

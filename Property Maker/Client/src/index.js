@@ -2,10 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
+import Footer from "./components/common/Footer";
+import Header from "./components/common/Header";
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+root.render(<BrowserRouter>
   <React.StrictMode>
+    <Header />
     <App />
-  </React.StrictMode>
+    <Footer />
+    <ToastContainer />
+  </React.StrictMode></BrowserRouter>
 );
