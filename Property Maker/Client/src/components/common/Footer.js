@@ -37,7 +37,7 @@ const Footer = () => {
                                             type="email"
                                             id="UserEmail"
                                             placeholder="enter email address"
-                                            className="w-full border-none sm:text-sm bg-gray-200"
+                                            className="p-4 w-full border-none sm:text-sm bg-gray-200"
                                         />
 
                                         <button
